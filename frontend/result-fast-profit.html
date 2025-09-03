@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ผลวิเคราะห์ สายทำกำไรเร็ว | Gold Bot Giver</title>
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Inter & Noto Sans Thai -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Noto+Sans+Thai:wght@400;700;800&display=swap" rel="stylesheet">
 
     <style>
@@ -25,7 +23,6 @@
             --font-heading: 'Inter', 'Noto Sans Thai', sans-serif;
             --font-body: 'Inter', 'Noto Sans Thai', sans-serif;
             --shadow-gold: 0 10px 30px -5px rgba(255, 215, 0, 0.2);
-            
         }
         body {
             font-family: var(--font-body);
@@ -38,18 +35,15 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* --- THE FIX IS HERE --- */
         .text-gold { color: var(--accent-gold); }
-        
-        /* Custom class for prominent CTA */
         .cta-prominent {
             background-image: linear-gradient(to right, #facc15 0%, #fb923c 100%);
             color: #1e293b;
             font-weight: 800;
-            padding: 1.25rem 2.5rem; /* py-5 px-10 */
-            border-radius: 0.75rem; /* rounded-xl */
-            font-size: 1.25rem; /* text-xl */
-            letter-spacing: 0.05em; /* tracking-wide */
+            padding: 1.25rem 2.5rem;
+            border-radius: 0.75rem;
+            font-size: 1.25rem;
+            letter-spacing: 0.05em;
             transition: all 0.3s ease;
             box-shadow: 0 8px 25px rgba(251, 146, 60, 0.3);
             transform: scale(1);
@@ -62,10 +56,8 @@
 </head>
 <body class="bg-slate-900 text-slate-50">
 
-    <!-- Header -->
     <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-800">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <!-- Brand & Navigation: replaced text with logo and added About link -->
             <a href="index.html" class="flex items-center">
                 <img src="static/images/logo.png" alt="Gold Bot Giver Logo" class="h-14 w-auto">
             </a>
@@ -79,7 +71,6 @@
     </header>
 
     <main>
-        <!-- Hero Result Section -->
         <section class="py-20 md:py-28 text-center">
             <div class="container mx-auto px-6">
                 <h2 class="text-xl font-bold text-accent-blue uppercase tracking-widest">ผลวิเคราะห์ของคุณ</h2>
@@ -90,7 +81,6 @@
             </div>
         </section>
 
-        <!-- Bot Recommendations -->
         <section class="pb-20 md:pb-28">
             <div class="container mx-auto px-6 space-y-16">
                 <div class="text-center border-t border-b border-slate-700 py-4">
@@ -98,12 +88,10 @@
                     <p class="text-slate-400 text-sm">รายงานฉบับเต็ม (กราฟ, จำนวนการเทรด, ฯลฯ) จะถูกส่งเข้าอีเมลที่คุณกรอกไว้</p>
                 </div>
 
-                <!-- BOT 1: The Singularity -->
                 <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 md:p-12">
                     <h3 class="text-4xl font-bold mb-2">BOT NAME: The Singularity</h3>
                     <h4 class="text-2xl font-bold highlight mb-6">(จักรกลเร่งความมั่งคั่ง)</h4>
                     <p class="text-slate-300 text-lg mb-8">ปลดปล่อยศักยภาพเงินทุนของคุณให้<span class="text-white font-bold">พุ่งทะยานสู่ขีดสุด!</span> นี่ไม่ใช่แค่ Bot เทรด แต่มันคือเครื่องจักรเร่งความมั่งคั่งที่ถูกออกแบบมาเพื่อ<span class="text-gold font-bold">สร้างกำไรอย่างบ้าคลั่ง</span></p>
-                    
                     <h5 class="text-2xl font-bold text-gold mb-6">ผลลัพธ์ที่เปลี่ยนชีวิต (Life-Changing Results):</h5>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <div class="bg-slate-800 p-6 rounded-xl">
@@ -124,12 +112,10 @@
                     </div>
                 </div>
 
-                <!-- BOT 2: The Scalpel -->
                 <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 md:p-12">
                     <h3 class="text-4xl font-bold mb-2">BOT NAME: The Scalpel</h3>
                     <h4 class="text-2xl font-bold highlight mb-6">(คมมีดผ่าตัดกำไร)</h4>
                     <p class="text-slate-300 text-lg mb-8">ลืมการรอคอยที่ยาวนานไปได้เลย! The Scalpel เข้าเทรดด้วย<span class="text-white font-bold">ความเร็วและความแม่นยำดุจมีดหมอ</span> <span class="text-gold font-bold">เฉือนเอากำไรก้อนโต</span>จากตลาดโดยไม่ต้องรอ</p>
-
                     <h5 class="text-2xl font-bold text-gold mb-6">ผลลัพธ์ที่จับต้องได้ (Tangible Results)</h5>
                      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <div class="bg-slate-800 p-6 rounded-xl">
@@ -152,7 +138,6 @@
             </div>
         </section>
 
-        <!-- New Course Offer Section -->
         <section class="py-20 md:py-28 bg-slate-900">
             <div class="container mx-auto px-6 max-w-4xl text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Bot เหล่านี้ทรงพลัง... แต่ความจริงที่สำคัญที่สุดคือ <br><span class="highlight">มันคือ 'ไอเดียของผม' ไม่ใช่ 'ของคุณ'</span></h2>
@@ -169,51 +154,48 @@
                     <h4 class="text-2xl md:text-3xl font-bold highlight mb-2">"สร้างโรบอททำเงินด้วยไอเดียของคุณ"</h4>
                     <h4 class="text-2xl md:text-3xl font-bold text-red-500" >ที่สำคัญคอร์สนี้ "ฟรี"</h4>                    
                     <p class="text-slate-300 text-xl mb-8">(ไม่ต้องเขียน Code เป็นก็ทำได้ใน 7 วัน)</p>
-
                     <p class="max-w-2xl mx-auto mb-8 text-lg">นี่ <strong class="text-red-500">ไม่ใช่</strong> คอร์สสอนเขียนโค้ด Python ที่น่าเบื่อ... แต่เป็น <strong class="text-gold">"เวิร์กชอปออนไลน์แบบเรียนเป็นรุ่น"</strong> ที่จะเปลี่ยนคุณจาก "คนมีไอเดีย" ให้กลายเป็น "ผู้สร้าง"</p>
-
+                    
                     <div class="max-w-3xl mx-auto my-8 text-left divide-y divide-slate-700">
-    <div class="py-5">
-        <p class="flex">
-            <span class="text-gold font-bold mr-3 mt-1">[✓]</span>
-            <strong class="text-white text-lg">The Idea-to-Logic Framework</strong>
-        </p>
-        <p class="pt-1 pl-8 text-slate-300 text-lg">
-            วิธีเปลี่ยน 'ไอเดีย' ที่ลอยๆ ของคุณให้กลายเป็น 'ตรรกะ' ที่ AI เข้าใจ
-        </p>
-    </div>
-    <div class="py-5">
-        <p class="flex">
-            <span class="text-gold font-bold mr-3 mt-1">[✓]</span>
-            <strong class="text-white text-lg">My Secret Prompt Library</strong>
-        </p>
-        <p class="pt-1 pl-8 text-slate-300 text-lg">
-            ชุด Prompt ที่ผมใช้จริงในการสั่งงาน AI ให้เขียน, แก้ไข, และทดสอบโค้ด Bot
-        </p>
-    </div>
-    <div class="py-5">
-        <p class="flex">
-            <span class="text-gold font-bold mr-3 mt-1">[✓]</span>
-            <strong class="text-white text-lg">The 7-Day Bot Builder Sprint</strong>
-        </p>
-        <p class="pt-1 pl-8 text-slate-300 text-lg">
-            เวิร์กชอป 7 วันที่จะพาคุณลงมือสร้าง Bot ตัวแรกของคุณเองตั้งแต่ต้นจนจบ
-        </p>
-    </div>
-    <div class="py-5">
-        <p class="flex">
-            <span class="text-gold font-bold mr-3 mt-1">[✓]</span>
-            <strong class="text-white text-lg">Live Text Q&A With Me</strong>
-        </p>
-        <p class="pt-1 pl-8 text-slate-300 text-lg">
-            ผมจะเข้ามา "ตอบ" ทุกคำถามของคุณแบบสดๆ ในกลุ่มส่วนตัว
-        </p>
-    </div>
-</div>
-
+                        <div class="py-5">
+                            <p class="flex">
+                                <span class="text-gold font-bold mr-3 mt-1">[✓]</span>
+                                <strong class="text-white text-lg">The Idea-to-Logic Framework</strong>
+                            </p>
+                            <p class="pt-1 pl-8 text-slate-300 text-lg">
+                                วิธีเปลี่ยน 'ไอเดีย' ที่ลอยๆ ของคุณให้กลายเป็น 'ตรรกะ' ที่ AI เข้าใจ
+                            </p>
+                        </div>
+                        <div class="py-5">
+                            <p class="flex">
+                                <span class="text-gold font-bold mr-3 mt-1">[✓]</span>
+                                <strong class="text-white text-lg">My Secret Prompt Library</strong>
+                            </p>
+                            <p class="pt-1 pl-8 text-slate-300 text-lg">
+                                ชุด Prompt ที่ผมใช้จริงในการสั่งงาน AI ให้เขียน, แก้ไข, และทดสอบโค้ด Bot
+                            </p>
+                        </div>
+                        <div class="py-5">
+                            <p class="flex">
+                                <span class="text-gold font-bold mr-3 mt-1">[✓]</span>
+                                <strong class="text-white text-lg">The 7-Day Bot Builder Sprint</strong>
+                            </p>
+                            <p class="pt-1 pl-8 text-slate-300 text-lg">
+                                เวิร์กชอป 7 วันที่จะพาคุณลงมือสร้าง Bot ตัวแรกของคุณเองตั้งแต่ต้นจนจบ
+                            </p>
+                        </div>
+                        <div class="py-5">
+                            <p class="flex">
+                                <span class="text-gold font-bold mr-3 mt-1">[✓]</span>
+                                <strong class="text-white text-lg">Live Text Q&A With Me</strong>
+                            </p>
+                            <p class="pt-1 pl-8 text-slate-300 text-lg">
+                                ผมจะเข้ามา "ตอบ" ทุกคำถามของคุณแบบสดๆ ในกลุ่มส่วนตัว
+                            </p>
+                        </div>
+                    </div>
                     <p class="text-lg font-bold">เงื่อนไขการเข้าร่วม (การันตีความมุ่งมั่น):</p>
                     <p class="text-slate-300 max-w-2xl mx-auto mb-6">เพื่อคัดกรองเฉพาะผู้ที่ "เอาจริง" คอร์สนี้จึงมี "เงินประกันความมุ่งมั่น" จำนวน <strong class="text-white">4,900 บาท</strong> และคุณจะได้รับเงินจำนวนนี้ <strong class="text-gold">คืน 100% เต็มจำนวน</strong> หลังจากที่คุณเข้าร่วมและทำภารกิจในคอร์สครบถ้วน</p>
-
                     <p class="font-bold text-white mb-4">เปิดรับสมัคร "รุ่นที่ 1" จำนวนจำกัดเพียง 50 ท่านเท่านั้น</p>
                     <p class="font-bold text-red-500 mb-4">(ปิดรับสมัครวันที่ 7 กันยายนนี้)</p>
                     <a href="https://buy.stripe.com/3cI5kC5S6dc4dOI6ANenS01" class="inline-block cta-prominent">
@@ -226,4 +208,3 @@
 
 </body>
 </html>
-
