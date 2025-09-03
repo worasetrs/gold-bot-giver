@@ -1,7 +1,7 @@
 # ==== imports ด้านบน ====
 import os
 import logging
-from flask import Flask, jsonify, request, , url_for
+from flask import Flask, jsonify, request, url_for, redirect
 from flask_cors import CORS
 
 # ถ้ามีการใช้ SendGrid
