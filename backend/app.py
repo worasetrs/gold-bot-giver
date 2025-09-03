@@ -1,9 +1,7 @@
 # ==== imports ด้านบน ====
 import os
 import logging
-import base64
-
-from flask import Flask, jsonify, request, render_template, url_for  # << เพิ่ม render_template, url_for
+from flask import Flask, jsonify, request, , url_for
 from flask_cors import CORS
 
 # ถ้ามีการใช้ SendGrid
@@ -36,7 +34,6 @@ STRIPE_LINK_4900 = os.getenv("STRIPE_LINK_4900", "")
 # @app.post("/submit-quiz-placeholder")
 # def submit_quiz_placeholder():
 #     ...
-
 
 @app.post("/submit-quiz-placeholder")
 def submit_quiz_placeholder():
