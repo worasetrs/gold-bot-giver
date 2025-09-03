@@ -10,8 +10,8 @@ CORS(app, origins=[os.getenv("FRONTEND_URL") or "*"], supports_credentials=True)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-@app.post("/submit-quiz")
-def submit_quiz():
+@app.post("/submit-quiz-placeholder")
+def submit_quiz_placeholder():
     data = request.get_json(silent=True)
     if not data:
         return jsonify(error="Invalid or missing JSON body"), 400
