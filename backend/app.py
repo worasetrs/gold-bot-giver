@@ -1,37 +1,24 @@
+# backend/app.py
 import os
-import base64
-from flask import Flask, render_template, redirect, url_for, request, jsonify
-# Import CORS to allow cross-origin requests from Netlify frontend
+from flask import Flask, jsonify
 from flask_cors import CORS
-from dotenv import load_dotenv
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
 
-# =================================================================
-# ===== 1. การตั้งค่าพื้นฐานและโหลด Configuration =====
-# =================================================================
-
-# โหลดค่าจากไฟล์ .env เข้าสู่ Environment Variables
-load_dotenv()
-
-# สร้าง Flask Application (สำคัญมาก! ต้องอยู่ก่อน @app.route)
 app = Flask(__name__)
+CORS(app, origins=[os.getenv("FRONTEND_URL") or "*"], supports_credentials=True)
 
-# -----------------------------------------------------------------
-# Enable CORS for API endpoints so that the Netlify-hosted frontend
-# can communicate with this Flask backend. Without this, browsers
-# will block the POST request to /submit-quiz due to the Same-Origin
-# Policy. Adjust the origins list to restrict requests to only your
-# Netlify domain if desired.
-# Example: CORS(app, resources={r"/submit-quiz": {"origins": ["https://deft-druid-74dcd2.netlify.app"]}})
-CORS(app, resources={r"/submit-quiz": {"origins": "*"}})
+@app.get("/")
+def root():
+    return jsonify(status="ok", service="gold-bot-giver-api")
 
-# ดึงค่า Configuration ต่างๆ จาก .env
-SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
-SENDER_EMAIL = os.getenv('SENDER_EMAIL')
-SENDER_NAME = os.getenv('SENDER_NAME', 'ทีมงานของคุณ') # ใส่ค่า default ไว้
-STRIPE_LINK_4900 = os.getenv('STRIPE_LINK_4900')
-STRIPE_LINK_2900 = os.getenv('STRIPE_LINK_2900')
+@app.get("/health")
+def health():
+    return jsonify(status="ok")
+
+# สำหรับรันเครื่องตัวเอง/ทดสอบเท่านั้น (Render จะใช้ gunicorn)
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
+
 
 # =================================================================
 # ===== 2. ฟังก์ชันสำหรับส่งอีเมล =====
