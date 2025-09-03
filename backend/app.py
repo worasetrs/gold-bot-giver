@@ -122,14 +122,7 @@ def send_results_email(recipient_email: str, style_name: str, customer_name: str
         subject = f"[ผลวิเคราะห์] สไตล์การลงทุน AI ของคุณคือ 'สายเติบโตมั่นคง (Stable Growth)'"
         # 🔴 สำคัญ: แก้ไข Path ไฟล์แนบ 4 ไฟล์ของคุณให้ถูกต้องที่นี่
         attachment_paths = [
-            'reports/The Apex_backtest_period_1_20250603-20250901.html',
-            'reports/The Apex_backtest_period_2_20250305-20250603.html',
-            'reports/The Apex_backtest_period_3_20241205-20250305.html',
-            'reports/The Apex_backtest_period_4_20240906-20241205.html',
-            'reports/The Oracle_backtest_period_1_20250603-20250901.html',
-            'reports/The Oracle_backtest_period_2_20250305-20250603.html',
-            'reports/The Oracle_backtest_period_3_20241205-20250305.html',
-            'reports/The Oracle_backtest_period_4_20240906-20241205.html',
+            'reports/scenario15.pdf',
         ]
         
         # (เนื้อหา html_content เหมือนเดิม)
