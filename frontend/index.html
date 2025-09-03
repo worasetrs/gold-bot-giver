@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Bot Giver | ค้นพบสไตล์การลงทุน AI ของคุณ</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SweetAlert2 CDN (FIX) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles to apply the font and color scheme */
+        body {
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            background-color: #0f172a; /* Tailwind slate-900 */
+            color: #f8fafc; /* Tailwind slate-50 */
+        }
+        .font-brand {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+        }
+        .bg-gold { background-color: #FFD700; }
+        .text-gold { color: #FFD700; }
+        .hover\:bg-gold-dark:hover { background-color: #cca300; }
+        .border-gold { border-color: #FFD700; }
+        .ring-gold:focus { --tw-ring-color: #FFD700; }
+        .bg-cool-blue { background-color: #3b82f6; }
+        .text-cool-blue { color: #3b82f6; }
+        .shadow-gold { box-shadow: 0 10px 30px -5px rgba(255, 215, 0, 0.2); }
+        
+        /* Custom styles for the Quiz */
+        .quiz-option {
+            transition: all 0.2s ease-in-out;
+        }
+        .quiz-option input:checked + label {
+            border-color: #FFD700;
+            background-color: #4a3f0e;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        .quiz-option input:checked + label h3 {
+            color: #FFD700;
+        }
+        .progress-bar-inner {
+            transition: width 0.5s ease-in-out;
+        }
+        /* Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-50">
+
+    <!-- =========== Header & Navigation =========== -->
+    <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Brand & Navigation: replaced text with logo and added About link -->
+                <a href="index.html" class="flex items-center">
+                    <!-- Logo image -->
+                    <img src="static/images/logo.png" alt="Gold Bot Giver Logo" class="h-14 w-auto">
+                </a>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <!-- About Us link -->
+                    <a href="about.html" class="text-slate-50 hover:text-gold">เกี่ยวกับเรา</a>
+                    <!-- Original CTA: free analysis scroll -->
+                    <a href="#final-cta" class="bg-gold text-slate-900 font-bold py-2 px-6 rounded-lg hover:bg-gold-dark transition duration-300">
+                        รับผลวิเคราะห์ฟรี
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========== Section 1: The Quiz Funnel =========== -->
+        <section id="quiz-hook" class="flex items-center justify-center min-h-screen py-12 md:py-20 bg-slate-800/20">
+            <div class="container mx-auto px-6 text-center">
+                <!-- Intro -->
+                <div id="quiz-intro">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">คุณเป็นนักลงทุนสาย <span class="text-gold">'ทำกำไรเร็ว'</span><br>หรือสาย <span class="text-cool-blue">'เติบโตมั่นคง'?</span></h1>
+                    <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+                        ตอบคำถามเพียง 3 ข้อใน 60 วินาที เพื่อรับ 'ผลวิเคราะห์สไตล์การลงทุน AI' และค้นพบ 2 Bot ที่ 'สร้างมาเพื่อคุณ' โดยเฉพาะ
+                    </p>
+                    <button id="start-quiz-btn" class="bg-gold text-slate-900 font-bold py-4 px-10 rounded-lg text-lg hover:bg-gold-dark transition duration-300 shadow-gold">
+                        เริ่มทำแบบทดสอบ!
+                    </button>
+                </div>
+                <!-- Quiz -->
+                <div id="quiz-container" class="hidden">
+                    <div class="max-w-3xl mx-auto">
+                        <div class="w-full bg-slate-700 rounded-full h-2.5 mb-4">
+                            <div id="progress-bar" class="bg-gold h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <div id="question-area" class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                            <h2 id="question-text" class="text-2xl md:text-3xl font-bold mb-8"></h2>
+                            <div id="answer-options" class="space-y-4"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gate -->
+                <div id="email-gate" class="hidden">
+                    <div class="max-w-2xl mx-auto">
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-gold mb-4">สุดยอดมาก! ผลวิเคราะห์ของคุณพร้อมแล้ว</h2>
+                        <p class="text-lg text-slate-300 mb-8">
+                            เราได้ทำการวิเคราะห์สไตล์การลงทุนของคุณและคัดเลือก Bot ที่เหมาะสมที่สุด 2 ตัวจากคลังแสงของเราเรียบร้อยแล้ว กรอกอีเมลของคุณด้านล่างเพื่อรับ 'ผลวิเคราะห์ฉบับเต็ม' และดูว่า Bot ตัวไหนคือคู่หูของคุณ
+                        </p>
+                        <form id="result-form" class="max-w-xl mx-auto">
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <input type="email" placeholder="กรอกอีเมลของคุณที่นี่" required class="w-full bg-slate-700 text-slate-50 py-3 px-5 rounded-lg border border-slate-600 focus:ring-2 ring-gold focus:outline-none transition duration-300">
+                                <button type="submit" class="bg-gold text-slate-900 font-bold py-3 px-8 rounded-lg hover:bg-gold-dark transition duration-300 whitespace-nowrap">
+                                    ดูผลวิเคราะห์ของฉัน!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Section 2: Problem & Agitation =========== -->
+        <section class="py-20 md:py-28 bg-slate-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">กำไรของคุณกำลังถูกทำลายโดยศัตรูที่มองไม่เห็น</h2>
+                    <p class="text-slate-300">นักลงทุนส่วนใหญ่ล้มเหลวไม่ใช่เพราะขาดความรู้ แต่เพราะพวกเขาพ่ายแพ้ให้กับ 3 อุปสรรคสำคัญนี้</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 animate-on-scroll" data-delay="100">
+                        <div class="flex justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                        <h3 class="text-xl font-bold mb-2">เทรดด้วยอารมณ์</h3>
+                        <p class="text-slate-400">ความกลัวและความโลภกำลังทำลายพอร์ตของคุณใช่ไหม? การตัดสินใจที่ผิดพลาดเพียงครั้งเดียวอาจล้างกำไรทั้งหมด</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 animate-on-scroll" data-delay="200">
+                        <div class="flex justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
+                        <h3 class="text-xl font-bold mb-2">ไม่มีเวลาเฝ้าจอ</h3>
+                        <p class="text-slate-400">คุณมีงานประจำและครอบครัวต้องดูแล การจะมานั่งวิเคราะห์กราฟตลอด 24 ชั่วโมงเป็นเรื่องที่เป็นไปไม่ได้</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 animate-on-scroll" data-delay="300">
+                         <div class="flex justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg></div>
+                        <h3 class="text-xl font-bold mb-2">ไร้กลยุทธ์ที่พิสูจน์แล้ว</h3>
+                        <p class="text-slate-400">คุณกำลังเทรดแบบเดาสุ่ม ลองผิดลองถูก โดยไม่มีระบบที่ชัดเจนมารองรับใช่หรือไม่?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Section 3: Solution & Dream Outcome =========== -->
+        <section class="py-20 md:py-28">
+            <div class="container mx-auto px-6 text-center">
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">ทำงานอย่างมีระบบ ไม่ใช่หนักกว่าเดิม:<br/><span class="text-gold">อนาคตของการลงทุนอยู่ที่นี่แล้ว</span></h2>
+                    <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-12">
+                        ระบบของ Gold Bot Giver ถูกสร้างขึ้นมาเพื่อแก้ปัญหาทั้ง 3 ข้อโดยเฉพาะ ให้คุณได้เปรียบในตลาดอย่างที่ไม่เคยเป็นมาก่อน
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-left p-6 animate-on-scroll" data-delay="100">
+                        <h3 class="text-xl font-bold text-cool-blue mb-2">การตัดสินใจที่ไร้อคติ 100%</h3>
+                        <p class="text-slate-400">Bot ของเราทำงานตามตรรกะและสถิติที่ผ่านการทดสอบมาแล้วนับล้านครั้ง ปราศจากอารมณ์โดยสิ้นเชิง</p>
+                    </div>
+                    <div class="text-left p-6 animate-on-scroll" data-delay="200">
+                        <h3 class="text-xl font-bold text-cool-blue mb-2">เครื่องจักรทำเงินที่ทำงาน 24/7</h3>
+                        <p class="text-slate-400">ไม่ว่าคุณจะหลับ, ทำงาน, หรือไปเที่ยวพักผ่อน Bot ของเราจะคอยหาโอกาสในตลาดและบริหารพอร์ตให้คุณตลอดเวลา</p>
+                    </div>
+                    <div class="text-left p-6 animate-on-scroll" data-delay="300">
+                        <h3 class="text-xl font-bold text-cool-blue mb-2">กลยุทธ์ที่ผ่านการทดสอบและพิสูจน์แล้ว</h3>
+                        <p class="text-slate-400">เรามอบ 'รายงานข้อมูลเชิงลึก' ที่เต็มไปด้วยข้อมูลผลการทดสอบจริง เพื่อให้คุณเทรดด้วยความมั่นใจ ไม่ใช่ความหวัง</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Section 4: Final Call to Action =========== -->
+        <section id="final-cta" class="py-20 md:py-28 bg-slate-800/50">
+            <div class="container mx-auto px-6 text-center animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">พร้อมที่จะค้นพบ Bot ที่ใช่สำหรับคุณแล้วหรือยัง?</h2>
+                <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8">ใช้เวลาเพียง 60 วินาทีเพื่อทำแบบทดสอบ และรับผลวิเคราะห์สไตล์การลงทุนของคุณฟรี!</p>
+                <a href="#quiz-hook" class="bg-gold text-slate-900 font-bold py-4 px-10 rounded-lg text-lg hover:bg-gold-dark transition duration-300 shadow-gold">
+                    กลับไปทำแบบทดสอบ!
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========== Footer (Simplified) =========== -->
+    <footer class="bg-slate-900 py-8 border-t border-slate-800">
+        <div class="container mx-auto px-6 text-center text-slate-400">
+            <p>&copy; 2025 Gold Bot Giver. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- =========== Exit-Intent Pop-up =========== -->
+    <div id="exit-intent-popup" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4 hidden transition-opacity duration-300">
+        <div class="bg-slate-800 rounded-2xl p-8 md:p-12 max-w-lg w-full text-center border-2 border-gold relative">
+            <button id="close-popup" class="absolute top-4 right-4 text-slate-400 hover:text-white text-3xl">&times;</button>
+            <h2 class="text-3xl font-extrabold text-gold mb-4">เดี๋ยวก่อน!</h2>
+            <p class="text-lg text-slate-300 mb-6">อย่าเพิ่งไป...โอกาสในการค้นพบ Bot ที่สร้างมาเพื่อคุณอยู่แค่เอื้อม! ทำแบบทดสอบให้เสร็จเพื่อรับ 'ผลวิเคราะห์สไตล์การลงทุน AI' ฟรี!</p>
+            <button id="popup-resume-btn" class="bg-gold text-slate-900 font-bold py-3 px-8 rounded-lg hover:bg-gold-dark transition duration-300">
+                ทำแบบทดสอบต่อ!
+            </button>
+        </div>
+    </div>
+    
+    <!-- Hidden link for redirection (FIX) -->
+    <a id="redirect-link" href="#" class="hidden"></a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- QUIZ DATA ---
+            const quizData = [
+                {
+                    question: "เป้าหมายหลักในการลงทุนของคุณคืออะไร?",
+                    answers: { A: { text: "สร้างกระแสเงินสดรายเดือน", subtext: "(เน้นความสม่ำเสมอ)" }, B: { text: "ทำให้พอร์ตเติบโตสูงสุดใน 1-2 ปี", subtext: "(เน้นความเร็ว)" }, C: { text: "ปกป้องเงินต้นให้ปลอดภัยที่สุด", subtext: "(เน้นความเสี่ยงต่ำ)" } }
+                },
+                {
+                    question: "เมื่อตลาดผันผวนหนัก คุณรู้สึกอย่างไร?",
+                    answers: { A: { text: "ตื่นเต้น นี่คือโอกาส!", subtext: "" }, B: { text: "เฉยๆ เพราะเชื่อในระบบระยะยาว", subtext: "" }, C: { text: "กังวลใจ อยากจะรีบปิดทุกอย่าง", subtext: "" } }
+                },
+                {
+                    question: "คุณอยากตรวจสอบพอร์ตของคุณบ่อยแค่ไหน?",
+                    answers: { A: { text: "ทุกวัน", subtext: "" }, B: { text: "ทุกสัปดาห์", subtext: "" }, C: { text: "ทุกเดือน", subtext: "" } }
+                }
+            ];
+
+            // --- DOM ELEMENTS ---
+            const quizIntro = document.getElementById('quiz-intro');
+            const quizContainer = document.getElementById('quiz-container');
+            const emailGate = document.getElementById('email-gate');
+            const startQuizBtn = document.getElementById('start-quiz-btn');
+            const questionText = document.getElementById('question-text');
+            const answerOptions = document.getElementById('answer-options');
+            const progressBar = document.getElementById('progress-bar');
+            const resultForm = document.getElementById('result-form');
+            
+            let currentQuestionIndex = 0;
+            let userAnswers = [];
+
+            function startQuiz() {
+                quizIntro.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                renderQuestion();
+            }
+
+            function renderQuestion() {
+                const questionData = quizData[currentQuestionIndex];
+                questionText.textContent = questionData.question;
+                answerOptions.innerHTML = '';
+                
+                for (const key in questionData.answers) {
+                    const answer = questionData.answers[key];
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'quiz-option';
+                    optionDiv.innerHTML = `<input type="radio" name="answer" id="answer-${key}" value="${key}" class="sr-only"><label for="answer-${key}" class="block bg-slate-700/50 p-6 rounded-xl border-2 border-slate-600 hover:border-gold cursor-pointer"><h3 class="text-xl font-bold text-slate-100">${answer.text}</h3><p class="text-slate-400">${answer.subtext}</p></label>`;
+                    answerOptions.appendChild(optionDiv);
+                }
+                updateProgressBar();
+                document.querySelectorAll('input[name="answer"]').forEach(radio => {
+                    radio.addEventListener('change', handleAnswerSelection);
+                });
+            }
+            
+            function handleAnswerSelection(e) {
+                userAnswers[currentQuestionIndex] = e.target.value;
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < quizData.length) {
+                        renderQuestion();
+                    } else {
+                        showEmailGate();
+                    }
+                }, 400);
+            }
+
+            function updateProgressBar() {
+                const progress = ((currentQuestionIndex) / quizData.length) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+
+
+
+            function showEmailGate() {
+                quizContainer.classList.add('hidden');
+                emailGate.classList.remove('hidden');
+                progressBar.style.width = `100%`;
+            }
+
+            function analyzeResults() {
+                const aggressiveChoices = ['1B', '2A', '3A'];
+                let aggressiveScore = 0;
+                userAnswers.forEach((answer, index) => {
+                    const answerKey = `${index + 1}${answer}`;
+                    if (aggressiveChoices.includes(answerKey)) {
+                        aggressiveScore++;
+                    }
+                });
+                return aggressiveScore >= 2 ? 'fast' : 'stable';
+            }
+
+            // --- EVENT LISTENERS ---
+            if (startQuizBtn) {
+                startQuizBtn.addEventListener('click', startQuiz);
+            }
+            
+            // --- REVISED & FIXED: SUBMIT LOGIC ---
+            if (resultForm) {
+                // Submit handler: send quiz data to backend and redirect on success
+                resultForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    // Grab the email value from the form
+                    const emailInput = resultForm.querySelector('input[type="email"]');
+                    const emailValue = emailInput ? emailInput.value : '';
+                    // Show a loading alert while the email is being sent
+                    Swal.fire({
+                        title: 'กำลังส่งอีเมล...',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        didOpen: () => { Swal.showLoading(); }
+                    });
+                    try {
+                        // POST the quiz results to the backend endpoint
+                        // Update: point API call to the deployed backend on Render
+                        const response = await fetch('https://gold-bot-giver.onrender.com/submit-quiz', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email: emailValue, answers: userAnswers })
+                        });
+                        const data = await response.json();
+                        // After successful submission, show a success alert and redirect
+                        Swal.fire({
+                            title: 'ส่งอีเมลเรียบร้อย!',
+                            html: 'กำลังนำท่านไปยังผลการวิเคราะห์...',
+                            icon: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        }).then(() => {
+                            if (data && data.redirect_url) {
+                                window.location.href = data.redirect_url;
+                            }
+                        });
+                    } catch (error) {
+                        Swal.fire('เกิดข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้', 'error');
+                        console.error('Error submitting quiz:', error);
+                    }
+                });
+            }
+
+            // --- EXIT-INTENT POP-UP LOGIC ---
+            const popup = document.getElementById('exit-intent-popup');
+            const closeButton = document.getElementById('close-popup');
+            const resumeButton = document.getElementById('popup-resume-btn');
+            let popupShown = false;
+
+            const showPopup = () => {
+                 if (quizIntro && !quizIntro.classList.contains('hidden') && emailGate.classList.contains('hidden')) {
+                     if (!popupShown) {
+                        if(popup) popup.classList.remove('hidden');
+                        popupShown = true;
+                    }
+                }
+            };
+
+            const hidePopup = () => {
+                 if(popup) popup.classList.add('hidden');
+            };
+
+            const handleMouseOut = (e) => {
+                if (e.clientY < 10) { showPopup(); }
+            };
+            document.addEventListener('mouseout', handleMouseOut);
+            
+            if(closeButton) closeButton.addEventListener('click', hidePopup);
+            if(resumeButton) resumeButton.addEventListener('click', () => {
+                hidePopup();
+                const quizHook = document.getElementById('quiz-hook');
+                if(quizHook) quizHook.scrollIntoView();
+            });
+            if(popup) popup.addEventListener('click', (e) => {
+                if (e.target === popup) { hidePopup(); }
+            });
+
+            // --- SCROLL ANIMATION ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, parseInt(delay));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
+
