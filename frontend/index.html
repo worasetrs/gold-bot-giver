@@ -90,50 +90,46 @@
 
     <main>
         <!-- =========== Section 1: The Quiz Funnel =========== -->
-        <section id="quiz-hook" class="flex items-center justify-center min-h-screen py-8 md:py-12 bg-slate-800/20">
-            <div class="container mx-auto px-6 text-center">
-                <!-- Intro -->
-                <div id="quiz-intro">
-                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">คุณเป็นนักลงทุนสาย <span class="text-gold">'ทำกำไรเร็ว'</span><br>หรือสาย <span class="text-cool-blue">'เติบโตมั่นคง'?</span></h1>
-                    <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-                        ตอบคำถามเพียง 3 ข้อใน 60 วินาที เพื่อรับ 'ผลวิเคราะห์สไตล์การลงทุน AI' และค้นพบ 2 Bot ที่ 'สร้างมาเพื่อคุณ' โดยเฉพาะ
-                    </p>
-                    <button id="start-quiz-btn" class="bg-gold text-slate-900 font-bold py-4 px-10 rounded-lg text-lg hover:bg-gold-dark transition duration-300 shadow-gold">
-                        เริ่มทำแบบทดสอบ!
-                    </button>
+        <section id="quiz-hook" class="flex items-center justify-center py-10 md:py-12 bg-slate-800/20">
+    <div class="container mx-auto px-6 text-center">
+        <div id="quiz-intro">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">คุณเป็นนักลงทุนสาย <span class="text-gold">'ทำกำไรเร็ว'</span><br>หรือสาย <span class="text-cool-blue">'เติบโตมั่นคง'?</span></h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+                ตอบคำถามเพียง 3 ข้อใน 15 วินาที เพื่อรับ 'ผลวิเคราะห์สไตล์การลงทุน AI' และค้นพบ 2 Bot ที่ 'สร้างมาเพื่อคุณ' โดยเฉพาะ
+            </p>
+            <button id="start-quiz-btn" class="bg-gold text-slate-900 font-bold py-4 px-10 rounded-lg text-lg hover:bg-gold-dark transition duration-300 shadow-gold">
+                เริ่มทำแบบทดสอบ!
+            </button>
+        </div>
+        <div id="quiz-container" class="hidden">
+            <div class="max-w-3xl mx-auto">
+                <div class="w-full bg-slate-700 rounded-full h-2.5 mb-4">
+                    <div id="progress-bar" class="bg-gold h-2.5 rounded-full" style="width: 0%"></div>
                 </div>
-                <!-- Quiz -->
-                <div id="quiz-container" class="hidden">
-                    <div class="max-w-3xl mx-auto">
-                        <div class="w-full bg-slate-700 rounded-full h-2.5 mb-4">
-                            <div id="progress-bar" class="bg-gold h-2.5 rounded-full" style="width: 0%"></div>
-                        </div>
-                        <div id="question-area" class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-                            <h2 id="question-text" class="text-2xl md:text-3xl font-bold mb-8"></h2>
-                            <div id="answer-options" class="space-y-4"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Gate -->
-                <div id="email-gate" class="hidden">
-                    <div class="max-w-2xl mx-auto">
-                        <h2 class="text-3xl md:text-5xl font-extrabold text-gold mb-4">สุดยอดมาก! ผลวิเคราะห์ของคุณพร้อมแล้ว</h2>
-                        <p class="text-lg text-slate-300 mb-8">
-                            เราได้ทำการวิเคราะห์สไตล์การลงทุนของคุณและคัดเลือก Bot ที่เหมาะสมที่สุด 2 ตัวจากคลังแสงของเราเรียบร้อยแล้ว กรอกอีเมลของคุณด้านล่างเพื่อรับ 'ผลวิเคราะห์ฉบับเต็ม' และดูว่า Bot ตัวไหนคือคู่หูของคุณ
-                        </p>
-                        <form id="result-form" class="max-w-xl mx-auto">
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <input type="email" placeholder="กรอกอีเมลของคุณที่นี่" required class="w-full bg-slate-700 text-slate-50 py-3 px-5 rounded-lg border border-slate-600 focus:ring-2 ring-gold focus:outline-none transition duration-300">
-                                <button type="submit" class="bg-gold text-slate-900 font-bold py-3 px-8 rounded-lg hover:bg-gold-dark transition duration-300 whitespace-nowrap">
-                                    ดูผลวิเคราะห์ของฉัน!
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                <div id="question-area" class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                    <h2 id="question-text" class="text-2xl md:text-3xl font-bold mb-8"></h2>
+                    <div id="answer-options" class="space-y-4"></div>
                 </div>
             </div>
-        </section>
-
+        </div>
+        <div id="email-gate" class="hidden">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-gold mb-4">สุดยอดมาก! ผลวิเคราะห์ของคุณพร้อมแล้ว</h2>
+                <p class="text-lg text-slate-300 mb-8">
+                    เราได้ทำการวิเคราะห์สไตล์การลงทุนของคุณและคัดเลือก Bot ที่เหมาะสมที่สุด 2 ตัวจากคลังแสงของเราเรียบร้อยแล้ว กรอกอีเมลของคุณด้านล่างเพื่อรับ 'ผลวิเคราะห์ฉบับเต็ม' และดูว่า Bot ตัวไหนคือคู่หูของคุณ
+                </p>
+                <form id="result-form" class="max-w-xl mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="กรอกอีเมลของคุณที่นี่" required class="w-full bg-slate-700 text-slate-50 py-3 px-5 rounded-lg border border-slate-600 focus:ring-2 ring-gold focus:outline-none transition duration-300">
+                        <button type="submit" class="bg-gold text-slate-900 font-bold py-3 px-8 rounded-lg hover:bg-gold-dark transition duration-300 whitespace-nowrap">
+                            ดูผลวิเคราะห์ของฉัน!
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
         <!-- =========== Section 2: Problem & Agitation =========== -->
         <section class="py-15 md:py-23 bg-slate-800/50">
             <div class="container mx-auto px-6">
