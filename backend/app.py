@@ -23,7 +23,7 @@ app = Flask(__name__)
 # will block the POST request to /submit-quiz due to the Same-Origin
 # Policy. Adjust the origins list to restrict requests to only your
 # Netlify domain if desired.
-# Example: CORS(app, resources={r"/submit-quiz": {"origins": ["https://your-site.netlify.app"]}})
+# Example: CORS(app, resources={r"/submit-quiz": {"origins": ["https://deft-druid-74dcd2.netlify.app"]}})
 CORS(app, resources={r"/submit-quiz": {"origins": "*"}})
 
 # ดึงค่า Configuration ต่างๆ จาก .env
