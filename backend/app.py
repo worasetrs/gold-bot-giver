@@ -1,48 +1,30 @@
-# ⬆️ ส่วนบนของไฟล์
+# ==== imports ด้านบน ====
 import os
 import logging
-from flask import Flask, jsonify, request  # << เพิ่ม request
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, origins=[os.getenv("FRONTEND_URL") or "*"], supports_credentials=True)
 
-# แนะนำเปิด logging ระดับ INFO/ERROR
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 @app.post("/submit-quiz")
 def submit_quiz():
-    try:
-        # รับ JSON อย่างปลอดภัย
-        data = request.get_json(silent=True)
-        if not data:
-            return jsonify(error="Invalid or missing JSON body"), 400
+    data = request.get_json(silent=True)
+    if not data:
+        return jsonify(error="Invalid or missing JSON body"), 400
 
-        # ตัวอย่าง schema minimal
-        # expected: {"name": "...", "email": "...", "answers": [...]}
-        name = data.get("name")
-        email = data.get("email")
-        answers = data.get("answers")
+    name = data.get("name")
+    email = data.get("email")
+    answers = data.get("answers")
 
-        if not isinstance(name, str) or not isinstance(email, str) or not isinstance(answers, list):
-            return jsonify(error="Missing or invalid fields: name/email/answers"), 400
+    if not isinstance(name, str) or not isinstance(email, str) or not isinstance(answers, list):
+        return jsonify(error="Missing or invalid fields: name/email/answers"), 400
 
-        # TODO: ทำงานประมวลผลจริง เช่น ตรวจคำตอบ/บันทึก/ส่งอีเมล
-        # score = calculate_score(answers)  # ถ้ามีฟังก์ชัน
-        # send_email(email, score)          # ถ้ามีฟังก์ชัน
-
-        result = {
-            "ok": True,
-            "message": "Quiz submitted successfully",
-            # "score": score,
-        }
-        return jsonify(result), 200
-
-    except Exception as e:
-        logger.exception("submit_quiz failed")
-        return jsonify(error="Internal Server Error", detail=str(e)), 500
-
+    # TODO: ใส่ logic ของคุณ (ตรวจคำตอบ/บันทึก/ส่งอีเมล)
+    return jsonify(ok=True, message="Quiz submitted successfully"), 200
 
 # =================================================================
 # ===== 2. ฟังก์ชันสำหรับส่งอีเมล =====
