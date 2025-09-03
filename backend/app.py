@@ -1,14 +1,42 @@
 # ==== imports ด้านบน ====
 import os
 import logging
-from flask import Flask, jsonify, request
+import base64
+
+from flask import Flask, jsonify, request, render_template, url_for  # << เพิ่ม render_template, url_for
 from flask_cors import CORS
+
+# ถ้ามีการใช้ SendGrid
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType, Disposition
+
+# โหลด .env (สำหรับรันท้องถิ่น; บน Render ใช้ Dashboard ตั้งค่า ENV)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    pass
 
 app = Flask(__name__)
 CORS(app, origins=[os.getenv("FRONTEND_URL") or "*"], supports_credentials=True)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# ===== ค่า ENV ที่ต้องใช้ =====
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")             # ใส่ใน Render > Environment
+SENDER_EMAIL     = os.getenv("SENDER_EMAIL")                  # เช่น no-reply@yourdomain.com
+SENDER_NAME      = os.getenv("SENDER_NAME", "Gold Bot Giver")
+
+# ลิงก์ Stripe ที่ฝั่ง template ต้องใช้
+STRIPE_LINK_2900 = os.getenv("STRIPE_LINK_2900", "")
+STRIPE_LINK_4900 = os.getenv("STRIPE_LINK_4900", "")
+
+# (ถ้ายังมี route ตัวอย่างที่ต้นไฟล์ เปลี่ยน path แล้วนะ)
+# @app.post("/submit-quiz-placeholder")
+# def submit_quiz_placeholder():
+#     ...
+
 
 @app.post("/submit-quiz-placeholder")
 def submit_quiz_placeholder():
