@@ -29,4 +29,5 @@ try:
     print(response.body)
     print(response.headers)
 except Exception as e:
+
     print(f"Error: {e}")
