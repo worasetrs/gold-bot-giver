@@ -1,23 +1,47 @@
-# backend/app.py
+# ⬆️ ส่วนบนของไฟล์
 import os
-from flask import Flask, jsonify
+import logging
+from flask import Flask, jsonify, request  # << เพิ่ม request
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, origins=[os.getenv("FRONTEND_URL") or "*"], supports_credentials=True)
 
-@app.get("/")
-def root():
-    return jsonify(status="ok", service="gold-bot-giver-api")
+# แนะนำเปิด logging ระดับ INFO/ERROR
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-@app.get("/health")
-def health():
-    return jsonify(status="ok")
+@app.post("/submit-quiz")
+def submit_quiz():
+    try:
+        # รับ JSON อย่างปลอดภัย
+        data = request.get_json(silent=True)
+        if not data:
+            return jsonify(error="Invalid or missing JSON body"), 400
 
-# สำหรับรันเครื่องตัวเอง/ทดสอบเท่านั้น (Render จะใช้ gunicorn)
-if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=False)
+        # ตัวอย่าง schema minimal
+        # expected: {"name": "...", "email": "...", "answers": [...]}
+        name = data.get("name")
+        email = data.get("email")
+        answers = data.get("answers")
+
+        if not isinstance(name, str) or not isinstance(email, str) or not isinstance(answers, list):
+            return jsonify(error="Missing or invalid fields: name/email/answers"), 400
+
+        # TODO: ทำงานประมวลผลจริง เช่น ตรวจคำตอบ/บันทึก/ส่งอีเมล
+        # score = calculate_score(answers)  # ถ้ามีฟังก์ชัน
+        # send_email(email, score)          # ถ้ามีฟังก์ชัน
+
+        result = {
+            "ok": True,
+            "message": "Quiz submitted successfully",
+            # "score": score,
+        }
+        return jsonify(result), 200
+
+    except Exception as e:
+        logger.exception("submit_quiz failed")
+        return jsonify(error="Internal Server Error", detail=str(e)), 500
 
 
 # =================================================================
