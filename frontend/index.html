@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gold Bot Giver | ค้นพบสไตล์การลงทุน AI ของคุณ</title>
     
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- SweetAlert2 CDN (FIX) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
@@ -64,14 +67,19 @@
 </head>
 <body class="bg-slate-900 text-slate-50">
 
+    <!-- =========== Header & Navigation =========== -->
     <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-800">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
+                <!-- Brand & Navigation: replaced text with logo and added About link -->
                 <a href="index.html" class="flex items-center">
+                    <!-- Logo image -->
                     <img src="static/images/logo.png" alt="Gold Bot Giver Logo" class="h-14 w-auto">
                 </a>
                 <nav class="hidden md:flex items-center space-x-6">
+                    <!-- About Us link -->
                     <a href="about.html" class="text-slate-50 hover:text-gold">เกี่ยวกับเรา</a>
+                    <!-- Original CTA: free analysis scroll -->
                     <a href="#final-cta" class="bg-gold text-slate-900 font-bold py-2 px-6 rounded-lg hover:bg-gold-dark transition duration-300">
                         รับผลวิเคราะห์ฟรี
                     </a>
@@ -81,8 +89,10 @@
     </header>
 
     <main>
-        <section id="quiz-hook" class="flex items-center justify-center min-h-screen py-12 md:py-16 bg-slate-800/20">
+        <!-- =========== Section 1: The Quiz Funnel =========== -->
+        <section id="quiz-hook" class="flex items-center justify-center min-h-screen py-8 md:py-12 bg-slate-800/20">
             <div class="container mx-auto px-6 text-center">
+                <!-- Intro -->
                 <div id="quiz-intro">
                     <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">คุณเป็นนักลงทุนสาย <span class="text-gold">'ทำกำไรเร็ว'</span><br>หรือสาย <span class="text-cool-blue">'เติบโตมั่นคง'?</span></h1>
                     <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
@@ -92,6 +102,7 @@
                         เริ่มทำแบบทดสอบ!
                     </button>
                 </div>
+                <!-- Quiz -->
                 <div id="quiz-container" class="hidden">
                     <div class="max-w-3xl mx-auto">
                         <div class="w-full bg-slate-700 rounded-full h-2.5 mb-4">
@@ -103,6 +114,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Gate -->
                 <div id="email-gate" class="hidden">
                     <div class="max-w-2xl mx-auto">
                         <h2 class="text-3xl md:text-5xl font-extrabold text-gold mb-4">สุดยอดมาก! ผลวิเคราะห์ของคุณพร้อมแล้ว</h2>
@@ -122,9 +134,10 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-20 bg-slate-800/50">
+        <!-- =========== Section 2: Problem & Agitation =========== -->
+        <section class="py-15 md:py-23 bg-slate-800/50">
             <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
+                <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">กำไรของคุณกำลังถูกทำลายโดยศัตรูที่มองไม่เห็น</h2>
                     <p class="text-slate-300">นักลงทุนส่วนใหญ่ล้มเหลวไม่ใช่เพราะขาดความรู้ แต่เพราะพวกเขาพ่ายแพ้ให้กับ 3 อุปสรรคสำคัญนี้</p>
                 </div>
@@ -148,11 +161,12 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-20">
+        <!-- =========== Section 3: Solution & Dream Outcome =========== -->
+        <section class="py-20 md:py-28">
             <div class="container mx-auto px-6 text-center">
                 <div class="animate-on-scroll">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">ทำงานอย่างมีระบบ ไม่ใช่หนักกว่าเดิม:<br/><span class="text-gold">อนาคตของการลงทุนอยู่ที่นี่แล้ว</span></h2>
-                    <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-10">
+                    <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-12">
                         ระบบของ Gold Bot Giver ถูกสร้างขึ้นมาเพื่อแก้ปัญหาทั้ง 3 ข้อโดยเฉพาะ ให้คุณได้เปรียบในตลาดอย่างที่ไม่เคยเป็นมาก่อน
                     </p>
                 </div>
@@ -173,7 +187,8 @@
             </div>
         </section>
 
-        <section id="final-cta" class="py-16 md:py-20 bg-slate-800/50">
+        <!-- =========== Section 4: Final Call to Action =========== -->
+        <section id="final-cta" class="py-20 md:py-28 bg-slate-800/50">
             <div class="container mx-auto px-6 text-center animate-on-scroll">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">พร้อมที่จะค้นพบ Bot ที่ใช่สำหรับคุณแล้วหรือยัง?</h2>
                 <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8">ใช้เวลาเพียง 60 วินาทีเพื่อทำแบบทดสอบ และรับผลวิเคราะห์สไตล์การลงทุนของคุณฟรี!</p>
@@ -184,12 +199,14 @@
         </section>
     </main>
 
-    <footer class="bg-slate-900 py-6 border-t border-slate-800">
+    <!-- =========== Footer (Simplified) =========== -->
+    <footer class="bg-slate-900 py-8 border-t border-slate-800">
         <div class="container mx-auto px-6 text-center text-slate-400">
             <p>&copy; 2025 Gold Bot Giver. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- =========== Exit-Intent Pop-up =========== -->
     <div id="exit-intent-popup" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4 hidden transition-opacity duration-300">
         <div class="bg-slate-800 rounded-2xl p-8 md:p-12 max-w-lg w-full text-center border-2 border-gold relative">
             <button id="close-popup" class="absolute top-4 right-4 text-slate-400 hover:text-white text-3xl">&times;</button>
@@ -201,6 +218,7 @@
         </div>
     </div>
     
+    <!-- Hidden link for redirection (FIX) -->
     <a id="redirect-link" href="#" class="hidden"></a>
     
     <script>
@@ -397,3 +415,4 @@
     </script>
 </body>
 </html>
+
