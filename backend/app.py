@@ -1,8 +1,6 @@
 import os
 import base64
 from flask import Flask, render_template, redirect, url_for, request, jsonify
-# Import CORS to allow cross-origin requests from Netlify frontend
-from flask_cors import CORS
 from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
@@ -16,15 +14,6 @@ load_dotenv()
 
 # สร้าง Flask Application (สำคัญมาก! ต้องอยู่ก่อน @app.route)
 app = Flask(__name__)
-
-# -----------------------------------------------------------------
-# Enable CORS for API endpoints so that the Netlify-hosted frontend
-# can communicate with this Flask backend. Without this, browsers
-# will block the POST request to /submit-quiz due to the Same-Origin
-# Policy. Adjust the origins list to restrict requests to only your
-# Netlify domain if desired.
-# Example: CORS(app, resources={r"/submit-quiz": {"origins": ["https://deft-druid-74dcd2.netlify.app"]}})
-CORS(app, resources={r"/submit-quiz": {"origins": "*"}})
 
 # ดึงค่า Configuration ต่างๆ จาก .env
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
