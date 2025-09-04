@@ -104,7 +104,7 @@ def send_results_email(recipient_email: str, style_name: str, customer_name: str
             </li>
         </ol>
         <p>ตอนนี้...ไปดูรายงานฉบับเต็ม (พร้อมกราฟและข้อมูลเชิงลึกอื่นๆ) เพื่อดูว่า Bot เทรดตัวไหนที่ "สร้างมาเพื่อคุณ" โดยเฉพาะ</p>
-        <a href="https://goldbotgiver.netlify.app/result-fast-profit" style="background-color: #007bff; color: white; padding: 12px 25px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px; font-weight: bold;">
+        <a href="{result-fast-profit.html}" style="background-color: #007bff; color: white; padding: 12px 25px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px; font-weight: bold;">
             &gt;&gt; คลิกที่นี่เพื่อดูผลวิเคราะห์ฉบับเต็มและ Bot ที่แนะนำสำหรับคุณ &lt;&lt;
         </a>
         <p>ในหน้านั้น ผมได้เตรียมข้อมูลเชิงลึกและข้อเสนอพิเศษสำหรับก้าวต่อไปในการเดินทางสู่การเป็น "ผู้สร้าง" ของคุณไว้ด้วยครับ</p>
@@ -142,7 +142,7 @@ def send_results_email(recipient_email: str, style_name: str, customer_name: str
             </li>
         </ol>
         <p>ตอนนี้...ไปดูรายงานฉบับเต็ม (พร้อมกราฟและข้อมูลเชิงลึกอื่นๆ) เพื่อดูว่า Bot เทรดตัวไหนที่ "สร้างมาเพื่อคุณ" โดยเฉพาะ</p>
-        <a href="https://goldbotgiver.netlify.app/result-stable-growth" style="background-color: #28a745; color: white; padding: 12px 25px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px; font-weight: bold;">
+        <a href={result-stable-growthl.html} style="background-color: #28a745; color: white; padding: 12px 25px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px; font-weight: bold;">
             &gt;&gt; คลิกที่นี่เพื่อดูผลวิเคราะห์ฉบับเต็มและ Bot ที่แนะนำสำหรับคุณ &lt;&lt;
         </a>
         <p>ในหน้านั้น ผมได้เตรียมข้อมูลเชิงลึกและข้อเสนอพิเศษสำหรับก้าวต่อไปในการเดินทางสู่การเป็น "ผู้สร้าง" ของคุณไว้ด้วยครับ</p>
