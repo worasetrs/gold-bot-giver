@@ -76,13 +76,6 @@ def send_results_email(recipient_email: str, style_name: str, customer_name: str
 
     if style_name == 'fast':
         subject = f"[ผลวิเคราะห์] สไตล์การลงทุน AI ของคุณคือ 'สายทำกำไรเร็ว (Fast Profit)'"
-        # 🔴 สำคัญ: แก้ไข Path ไฟล์แนบ 4 ไฟล์ของคุณให้ถูกต้องที่นี่
-        attachment_paths = [
-            'reports/fast_profit_report_period1.pdf',
-            'reports/fast_profit_report_period2.pdf',
-            'reports/fast_profit_report_period3.pdf',
-            'reports/fast_profit_report_period4.pdf',
-        ]
         
         # (เนื้อหา html_content เหมือนเดิม)
         html_content = f"""
@@ -120,10 +113,7 @@ def send_results_email(recipient_email: str, style_name: str, customer_name: str
         """
     else:  # 'stable'
         subject = f"[ผลวิเคราะห์] สไตล์การลงทุน AI ของคุณคือ 'สายเติบโตมั่นคง (Stable Growth)'"
-        # 🔴 สำคัญ: แก้ไข Path ไฟล์แนบ 4 ไฟล์ของคุณให้ถูกต้องที่นี่
-        attachment_paths = [
-            'reports/g.pdf',
-        ]
+
         
         # (เนื้อหา html_content เหมือนเดิม)
         html_content = f"""
